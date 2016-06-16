@@ -42,7 +42,7 @@ public:
     ensureCapacity(mSize+1);
 
     if (mSize == mCap) {
-      expand(mCap * 2);
+      expand(mCap * 2)
     }
 
     mData[mSize] = x;
@@ -56,6 +56,7 @@ public:
       mData[i] = mData[i-1];
     }
     mData[pos] = value;
+    shrink();
     mSize++;
 
   }
@@ -65,13 +66,6 @@ public:
       mData[i] = mData[i+1];
     }
     mSize--;
-  }
-
-  T& at(int pos) {
-    if (pos < 0 || pos >= mSize) {
-      cout << "YOU MADE A MISTAKE!!!!" << endl;
-    }
-    return mData[pos];
   }
 
   T& operator[](int pos) {
@@ -96,9 +90,6 @@ int main() {
 
   v.push_back(30);
   for (int i = 0;i < v.size();i++) { cout << i << ":" << v[i] << endl; } cout << endl;
-
-
-  v.at(0) = 20;
 
 
 
